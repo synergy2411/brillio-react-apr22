@@ -61,15 +61,99 @@
 
 // union type
 
-let age : string | number = "Thirty-Two";
+let age: string | number = "Thirty-Two";
 
 age = 32;
 
 
 // tuple type
 
-let user : [string, number] = ["John Doe", 32];
+let user: [string, number] = ["John Doe", 32];
 
 user = ["", 34];
 
 user = ["", 35];
+
+
+let demo = (): void => {
+    console.log("Void function")
+}
+
+let demoNever = (): never => {
+    throw new Error("Something went wrong");
+}
+
+// Custom Type
+type myType = string | number;
+let address: myType = "Marathahalli";
+address = 201;
+
+// Structural Type - interface | classes
+
+interface Animal {
+    legs: number;
+    species: string;
+}
+
+let bunny: Animal = {
+    legs: 4,
+    species: "Rabbit"
+}
+
+let kitty: Animal = {
+    legs: 4,
+    species: "Cat"
+}
+
+class Foo { }
+class Bar { }
+
+class Bam {
+    constructor(foo: Foo, bar: Bar) { }
+}
+new Bam(new Foo(), new Bar());
+
+
+interface CourseType {
+    courseId : string;
+    courseName : string;
+    courseDuration : number;
+}
+
+// Classes
+class Course {
+
+    // private courseId : string;
+    // private courseName : string;
+    // private courseDuration : number;
+
+    // constructor(courseId : string, courseName : string, courseDuration : number){
+    //     this.courseId = courseId;
+    //     this.courseName = courseName;
+    //     this.courseDuration = courseDuration;
+    // }
+
+    // constructor injection
+    // constructor(
+    //     private courseId: string, 
+    //     private courseName: string, 
+    //     private courseDuration: number
+    //     ) { }
+
+    constructor(private course : CourseType){}
+
+    getCourseDetail(): string {
+        return `${this.course.courseId} - ${this.course.courseName} | ${this.course.courseDuration}`;
+    }
+
+}
+
+let reactObj : CourseType = {
+    courseId : "C103",
+    courseName : "Awesome React",
+    courseDuration : 60
+}
+
+// let react = new Course("C102", "Angular for Beginner", 40);
+let react = new Course(reactObj);
+console.log(react.getCourseDetail())
