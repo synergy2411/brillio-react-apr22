@@ -32,8 +32,42 @@
                                 </div>
                             </div>
                             <!-- date -->
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label for="created-at">Created At :</label>
+                                    </div>
+                                    <div class="col-8">
+                                        <input type="date" min="2019-04-01" max="2022-12-31" name="created-at" id="created-at" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
                             <!-- type -->
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label for="type">Type :</label>
+                                    </div>
+                                    <div class="col-8">
+                                        <select name="type" id="sel-type" class="form-control">
+                                            <option value="payment">Payment</option>
+                                            <option value="receipt">Receipt</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
                             <!-- amount -->
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label for="amount">Amount :</label>
+                                    </div>
+                                    <div class="col-8">
+                                        <input type="number" min="0.0" step="0.1" name="amount" id="txtAmount" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
                             <!-- button -->
                             <div class="row">
                                 <div class="col-8 offset-2">
@@ -48,6 +82,9 @@
 
             </div>
         </div>
+
+        <!-- Display all items on UI -->
+        <ul></ul>
 
     </div>
     <script src="./build/app.js"></script>
