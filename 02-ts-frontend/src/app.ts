@@ -1,27 +1,9 @@
+import { ListTemplate } from './classes/listTemplate.js'
+import { Payment } from './classes/payments.js'
+import { Receipt } from './classes/receipts.js'
+import { HasFormatter } from './model/hasFormatter.interface.js'
+import { MoneyType } from './model/moneyType.interface.js'
 
-interface MoneyType {
-    title : string;
-    createdAt : Date;
-    amount : number;
-}
-
-interface HasFormatter{
-    format : () => string
-}
-
-class Payment implements HasFormatter{
-    constructor(private money : MoneyType){}
-    format() : string {
-        return `Spend $${this.money.amount} on ${this.money.title.toUpperCase()} dated ${this.money.createdAt}`
-    }
-}
-
-class Receipt implements HasFormatter {
-    constructor(private money : MoneyType){}
-    format() : string {
-        return `Received $${this.money.amount} for ${this.money.title.toUpperCase()} dated ${this.money.createdAt}`
-    }
-}
 
 window.onload = () => {
     const btnAdd = document.getElementById("btnAdd") as HTMLButtonElement;
@@ -29,6 +11,8 @@ window.onload = () => {
     const txtCreatedAt = document.getElementById("created-at") as HTMLInputElement;
     const selType = document.querySelector("#sel-type") as HTMLSelectElement;
     const txtAmount = document.getElementById("txtAmount") as HTMLInputElement;
+    const uList = document.getElementById("list") as HTMLUListElement;
+    const renderList = new ListTemplate(uList);
 
     btnAdd.addEventListener("click", (event : Event) => {
         event.preventDefault();
@@ -46,7 +30,7 @@ window.onload = () => {
         }else{
             doc = new Receipt(money)
         }
-        console.log(doc);
+        renderList.render(selType.value, doc)
     })
 
 }

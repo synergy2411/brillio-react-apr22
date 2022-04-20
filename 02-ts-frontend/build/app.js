@@ -1,26 +1,14 @@
-"use strict";
-class Payment {
-    constructor(money) {
-        this.money = money;
-    }
-    format() {
-        return `Spend $${this.money.amount} on ${this.money.title.toUpperCase()} dated ${this.money.createdAt}`;
-    }
-}
-class Receipt {
-    constructor(money) {
-        this.money = money;
-    }
-    format() {
-        return `Received $${this.money.amount} for ${this.money.title.toUpperCase()} dated ${this.money.createdAt}`;
-    }
-}
+import { ListTemplate } from './classes/listTemplate.js';
+import { Payment } from './classes/payments.js';
+import { Receipt } from './classes/receipts.js';
 window.onload = () => {
     const btnAdd = document.getElementById("btnAdd");
     const txtTitle = document.getElementById("txtTitle");
     const txtCreatedAt = document.getElementById("created-at");
     const selType = document.querySelector("#sel-type");
     const txtAmount = document.getElementById("txtAmount");
+    const uList = document.getElementById("list");
+    const renderList = new ListTemplate(uList);
     btnAdd.addEventListener("click", (event) => {
         event.preventDefault();
         let money = {
@@ -35,6 +23,6 @@ window.onload = () => {
         else {
             doc = new Receipt(money);
         }
-        console.log(doc);
+        renderList.render(selType.value, doc);
     });
 };
