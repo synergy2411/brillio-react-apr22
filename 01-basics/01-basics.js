@@ -1,5 +1,20 @@
 // Explicit Type
 // let username : string = "John Doe";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 // username = true;
 // console.log(username);
 // Implicit Type | Type inference
@@ -77,34 +92,53 @@ var Bam = /** @class */ (function () {
 }());
 new Bam(new Foo(), new Bar());
 // Classes
-var Course = /** @class */ (function () {
-    // private courseId : string;
-    // private courseName : string;
-    // private courseDuration : number;
-    // constructor(courseId : string, courseName : string, courseDuration : number){
-    //     this.courseId = courseId;
-    //     this.courseName = courseName;
-    //     this.courseDuration = courseDuration;
-    // }
-    // constructor injection
-    // constructor(
-    //     private courseId: string, 
-    //     private courseName: string, 
-    //     private courseDuration: number
-    //     ) { }
-    function Course(course) {
-        this.course = course;
+// class Course {
+//     // private courseId : string;
+//     // private courseName : string;
+//     // private courseDuration : number;
+//     // constructor(courseId : string, courseName : string, courseDuration : number){
+//     //     this.courseId = courseId;
+//     //     this.courseName = courseName;
+//     //     this.courseDuration = courseDuration;
+//     // }
+//     // constructor injection
+//     // constructor(
+//     //     private courseId: string, 
+//     //     private courseName: string, 
+//     //     private courseDuration: number
+//     //     ) { }
+//     constructor(private course : CourseType){}
+//     getCourseDetail(): string {
+//         return `${this.course.courseId} - ${this.course.courseName} | ${this.course.courseDuration}`;
+//     }
+// }
+// let reactObj : CourseType = {
+//     courseId : "C103",
+//     courseName : "Awesome React",
+//     courseDuration : 60
+// }
+// // let react = new Course("C102", "Angular for Beginner", 40);
+// let react = new Course(reactObj);
+// console.log(react.getCourseDetail())
+// inheritance
+var TekkenFighter = /** @class */ (function () {
+    function TekkenFighter() {
     }
-    Course.prototype.getCourseDetail = function () {
-        return "".concat(this.course.courseId, " - ").concat(this.course.courseName, " | ").concat(this.course.courseDuration);
+    TekkenFighter.prototype.move = function () {
+        console.log("Fatality Kick");
     };
-    return Course;
+    return TekkenFighter;
 }());
-var reactObj = {
-    courseId: "C103",
-    courseName: "Awesome React",
-    courseDuration: 60
-};
-// let react = new Course("C102", "Angular for Beginner", 40);
-var react = new Course(reactObj);
-console.log(react.getCourseDetail());
+var Paul = /** @class */ (function (_super) {
+    __extends(Paul, _super);
+    function Paul() {
+        return _super.call(this) || this;
+    }
+    Paul.prototype.fight = function () {
+        return "consumed 30% energy";
+    };
+    return Paul;
+}(TekkenFighter));
+var paul = new Paul();
+paul.move();
+console.log(paul.fight());

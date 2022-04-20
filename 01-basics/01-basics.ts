@@ -121,39 +121,63 @@ interface CourseType {
 }
 
 // Classes
-class Course {
+// class Course {
 
-    // private courseId : string;
-    // private courseName : string;
-    // private courseDuration : number;
+//     // private courseId : string;
+//     // private courseName : string;
+//     // private courseDuration : number;
 
-    // constructor(courseId : string, courseName : string, courseDuration : number){
-    //     this.courseId = courseId;
-    //     this.courseName = courseName;
-    //     this.courseDuration = courseDuration;
-    // }
+//     // constructor(courseId : string, courseName : string, courseDuration : number){
+//     //     this.courseId = courseId;
+//     //     this.courseName = courseName;
+//     //     this.courseDuration = courseDuration;
+//     // }
 
-    // constructor injection
-    // constructor(
-    //     private courseId: string, 
-    //     private courseName: string, 
-    //     private courseDuration: number
-    //     ) { }
+//     // constructor injection
+//     // constructor(
+//     //     private courseId: string, 
+//     //     private courseName: string, 
+//     //     private courseDuration: number
+//     //     ) { }
 
-    constructor(private course : CourseType){}
+//     constructor(private course : CourseType){}
 
-    getCourseDetail(): string {
-        return `${this.course.courseId} - ${this.course.courseName} | ${this.course.courseDuration}`;
+//     getCourseDetail(): string {
+//         return `${this.course.courseId} - ${this.course.courseName} | ${this.course.courseDuration}`;
+//     }
+
+// }
+
+// let reactObj : CourseType = {
+//     courseId : "C103",
+//     courseName : "Awesome React",
+//     courseDuration : 60
+// }
+
+// // let react = new Course("C102", "Angular for Beginner", 40);
+// let react = new Course(reactObj);
+// console.log(react.getCourseDetail())
+
+
+
+// inheritance
+abstract class TekkenFighter{
+    abstract fight() : string;
+    
+    move(){
+        console.log("Fatality Kick")
     }
-
 }
 
-let reactObj : CourseType = {
-    courseId : "C103",
-    courseName : "Awesome React",
-    courseDuration : 60
+class Paul extends TekkenFighter {
+    fight(): string {
+        return "consumed 30% energy";
+    }
+    constructor(){
+        super()
+    }
 }
 
-// let react = new Course("C102", "Angular for Beginner", 40);
-let react = new Course(reactObj);
-console.log(react.getCourseDetail())
+let paul = new Paul();
+paul.move()
+console.log(paul.fight())
