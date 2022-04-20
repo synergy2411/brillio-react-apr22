@@ -1,10 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Awesome App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/css/bootstrap.min.css"
+        integrity="sha512-T584yQ/tdRR5QwOpfvDfVQUidzfgc2339Lc8uBDtcp/wYu80d7jwBgAxbyMh0a9YM9F8N3tdErpFI8iaGx6x5g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
-    <h1>App Coming Soon...</h1>
+    <div class="container">
+        <p class="text-center display-4">My Money App</p>
+
+        <div class="row">
+            <div class="col-6 offset-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="text-center">Add Expense / Receipts</h4>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <!-- title -->
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label for="title">Title :</label>
+                                    </div>
+                                    <div class="col-8">
+                                        <input type="text" name="title" id="txtTitle" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- date -->
+                            <!-- type -->
+                            <!-- amount -->
+                            <!-- button -->
+                            <div class="row">
+                                <div class="col-8 offset-2">
+                                    <button type="button" id="btnAdd" class="btn btn-primary btn-block">
+                                        Add
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
     <script src="./build/app.js"></script>
 </body>
+
 </html>
