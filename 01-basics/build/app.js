@@ -1,7 +1,7 @@
 "use strict";
 let username = "John Doe";
 console.log(username);
-const demoFn = () => {
-    return "Some Demo event";
+const demoFn = (email) => {
+    return "Some Demo event " + email;
 };
-console.log(demoFn());
+console.log(demoFn("test@outlook"));

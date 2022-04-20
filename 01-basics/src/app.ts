@@ -1,8 +1,10 @@
 let username : string = "John Doe";
 console.log(username);
 
-const demoFn = () : string => {
-    return "Some Demo event"
+const demoFn = (email : string) : string => {
+    return "Some Demo event " + email
 }
 
-console.log(demoFn())
+console.log(demoFn("test@outlook"))
+
+

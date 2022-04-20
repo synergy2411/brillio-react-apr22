@@ -1,0 +1,12 @@
+{
+  "name": "02-ts-frontend",
+  "version": "1.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build" : "tsc --watch"
+  },
+  "keywords": [],
+  "author": "SumitK",
+  "license": "ISC"
+}

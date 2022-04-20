@@ -27,3 +27,14 @@ JavaScript determines the type of variable at runtime
 
 # to generate tsconfig.json
 > npx tsc --init
+
+> npm init -y
+// Script in package.json
+"compile" : "tsc --watch"
+
+# to install nodemon
+> npm i nodemon -g
+
+build> nodemon app.js
+
+01-basics> nodemon build/app.js
