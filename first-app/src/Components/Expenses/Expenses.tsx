@@ -14,8 +14,8 @@ const Expenses = () => {
             <p className="display-4 text-center">Expenses App</p>
             <div className="row">
                 <ExpenseItem expense={expenses[0]} />
-                <ExpenseItem expense={expenses[1]} />
-                <ExpenseItem expense={expenses[2]} />
+                <ExpenseItem expense={expenses[1]}/>
+                <ExpenseItem expense={expenses[2]}/>
             </div>
         </div>
     )

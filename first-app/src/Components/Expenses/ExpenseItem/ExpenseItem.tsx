@@ -1,6 +1,8 @@
+import React from "react";
 import { IExpense } from "../../../model/expense.interface";
 
-const ExpenseItem = (props : {expense : IExpense}) => {
+// const ExpenseItem = (props : {expense : IExpense}) => {
+const ExpenseItem : React.FC<{expense : IExpense}> = (props) => {
     
     return (
         <div className="col-4">
