@@ -1,23 +1,13 @@
 import React from 'react';
+import Expenses from './Components/Expenses/Expenses';
 
 function App() {
-  let title = "Awesome App";
-
-  let user = {
-    name : "Jenny Doe",
-    isAdmin : false
-  }
-
+  
   return (
     <div className="container">
-      <h1>{ title.toUpperCase() }</h1>
-      <p>Sum : { 2 + 2 } </p>
-      <p>Username : { user.name } </p>
-      <p> Type : {user.isAdmin ? 'Admin' : 'Employee'} </p>
+      <Expenses />
     </div>
   );
 }
 
 export default App;
-
-// JSX
