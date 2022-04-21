@@ -24,3 +24,35 @@ let john = new Student("S001", "John Doe", 23);
 console.log(john.getDetails());
 let jenny = new Student(101, "Jenny Doe", "Twenty-Two");
 console.log(jenny.getDetails());
+let myPost = {
+    postId: 101,
+    title: "Awesome Post",
+    body: "..."
+};
+let secondPost = {
+    postId: "P102",
+    title: "",
+    body: ""
+};
+let userOne = {
+    name: {
+        firstName: "",
+        lastName: "",
+        middleName: ""
+    },
+    email: ""
+};
+let userTwo = {
+    name: {
+        firstName: "",
+        lastName: ""
+    },
+    email: ""
+};
+let myAwesomeCar = {
+    car: {
+        make: "Audi",
+        model: "Q5",
+        engineNumber: 87654324
+    }
+};
