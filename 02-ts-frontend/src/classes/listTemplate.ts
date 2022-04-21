@@ -17,5 +17,5 @@ export class ListTemplate {
 
 // ul
     // li class="list-group-item"
-        // h5
-        // p
+        // h5 - Payment | Receipt
+        // p - format()

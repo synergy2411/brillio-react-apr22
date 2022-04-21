@@ -1,0 +1,12 @@
+{
+  "name": "03-ts-advanced",
+  "version": "1.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build" : "tsc --watch"
+  },
+  "keywords": [],
+  "author": "SumitK",
+  "license": "ISC"
+}
