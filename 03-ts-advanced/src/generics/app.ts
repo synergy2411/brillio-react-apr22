@@ -84,6 +84,9 @@ let secondPost : Post <string> = {
 }
 
 
+
+// Extending Generics
+
 interface User <T extends {firstName : string, lastName : string}> {
     name : T;
     email : string;
