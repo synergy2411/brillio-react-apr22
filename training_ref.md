@@ -119,3 +119,19 @@ html
 - Whenever new state depends upon previous state, use the function syntax to change the state
 
 [0,1,2] -> [0,1,2,3]
+
+
+# Atomic Design Principle
+- Atom : Smallest unit; eg. A Button, A Input Field etc
+- Molecules : Combo of Atoms; eg. A Serach bar -> One button + one input field
+- Organism : Combo of Molecules; eg. Header contain navigation bar -> Various Links + SerachBar
+- Template : Combo of Organism; eg. A Complete Form
+- Page : Combo of Templates; eg. A complete web page
+
+"Thinking in React"
+- Reusable
+
+
+<Button onBtnClick={btnClick} text='My Awesome Button' color='blue' bgColor='grey' border='2px red solid' />
+<Button onBtnClick={btnClick} text='My Second Button' color='yellow'bgColor='tomamto' border='2px green solid'/>
+const btnClick = (event : React.FormEvent) => console.log("Clicked");
