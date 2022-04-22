@@ -5,7 +5,7 @@ import ExpenseItem from "./ExpenseItem/ExpenseItem";
 
 const Expenses = () => {
 
-     const [showComp, setShowComp] = useState<boolean>(false)
+    const [showComp, setShowComp] = useState<boolean>(false)
 
     let expenses : Array<IExpense> = [
         { id: "e001", title: "grocery", createdAt: new Date("Dec 20, 2019"), amount: 12.9 },
@@ -22,7 +22,9 @@ const Expenses = () => {
             <p className="display-4 text-center">Expenses App</p>
             <div className="row">
                 <div className="col-4 offset-4">
-                    <button className="btn btn-block btn-dark" onClick={clickHandler} >Add New Expense</button>
+                    <button className="btn btn-block btn-dark" onClick={clickHandler} >
+                        {showComp ? 'Hide Form' : 'Show Form'}
+                        </button>
                 </div>
             </div>
             <br/>
