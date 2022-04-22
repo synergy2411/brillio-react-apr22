@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { v4 } from 'uuid';
 import { IExpense } from "../../../model/expense.interface";
 
-const AddExpense: React.FC<{onAddNewExpense : (exp : IExpense) => void}> = (props) => {
+const AddExpense: React.FC<{
+    onAddNewExpense : (exp? : IExpense | undefined) => void
+}> = (props) => {
 
     const [enteredTitle, setEnteredTitle] = useState<string>('');
     const [enteredCreatedAt, setEnteredCreatedAt] = useState<string>('');
@@ -26,6 +28,10 @@ const AddExpense: React.FC<{onAddNewExpense : (exp : IExpense) => void}> = (prop
 
     const createdAtChangeHandler : React.ChangeEventHandler<HTMLInputElement> = event => setEnteredCreatedAt(event.target.value)
     const amountChangeHandler : React.ChangeEventHandler<HTMLInputElement> = event => setEnteredAmount(event.target.value)
+
+    const cancelClickHandler = () => {
+        props.onAddNewExpense()
+    }
 
     return (
         <div className="row">
@@ -81,7 +87,8 @@ const AddExpense: React.FC<{onAddNewExpense : (exp : IExpense) => void}> = (prop
                                             type="button" onClick={addClickHandler}>Add</button>
                                     </div>
                                     <div className="col-6">
-                                        <button className="btn btn-warning btn-block">Cancel</button>
+                                        <button className="btn btn-warning btn-block"
+                                            type="button" onClick={cancelClickHandler}>Cancel</button>
                                     </div>
                                 </div>
                             </div>

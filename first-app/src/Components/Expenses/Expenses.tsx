@@ -19,10 +19,12 @@ const Expenses = () => {
         setShowComp(!showComp)
     }
 
-    const addNewExpense = (expense : IExpense) => {
-        setExpenses((prevState) => {
-            return [expense, ...prevState]
-        })
+    const addNewExpense = (expense? : IExpense) => {
+        if(expense){
+            setExpenses((prevState) => {
+                return [expense, ...prevState]
+            })
+        }
         setShowComp(false);
     }
 
@@ -40,9 +42,7 @@ const Expenses = () => {
             { showComp ? <AddExpense onAddNewExpense={addNewExpense} /> : ''}
             <br/>
             <div className="row">
-                <ExpenseItem expense={expenses[0]} />
-                <ExpenseItem expense={expenses[1]}/>
-                <ExpenseItem expense={expenses[2]}/>
+                { expenses.map(e => <ExpenseItem expense={e} key={e.id} />) }
             </div>
         </div>
     )
