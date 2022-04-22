@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { IExpense } from "../../model/expense.interface";
 import AddExpense from "./AddExpense/AddExpense";
+import ExpenseFilter from './ExpenseFilter/ExpenseFilter';
 import ExpenseItem from "./ExpenseItem/ExpenseItem";
 
 let INTIAL_EXPENSES : Array<IExpense> = [
@@ -28,6 +29,11 @@ const Expenses = () => {
         setShowComp(false);
     }
 
+    const onDeleteExpenseById = (id : string) => {
+        // const duplicateExpenses = expenses.filter(e => e.id !== id)
+        setExpenses(prevState => prevState.filter(e => e.id !== id));
+    }
+
     return (
         <div>
             <p className="display-4 text-center">Expenses App</p>
@@ -37,12 +43,17 @@ const Expenses = () => {
                         {showComp ? 'Hide Form' : 'Show Form'}
                         </button>
                 </div>
+                <div className='col-4'>
+                    <ExpenseFilter />
+                </div>
             </div>
             <br/>
             { showComp ? <AddExpense onAddNewExpense={addNewExpense} /> : ''}
             <br/>
             <div className="row">
-                { expenses.map(e => <ExpenseItem expense={e} key={e.id} />) }
+                { expenses.map(e => <ExpenseItem expense={e} 
+                                        key={e.id} 
+                                        onDeleteExpense = { onDeleteExpenseById }  />) }
             </div>
         </div>
     )
