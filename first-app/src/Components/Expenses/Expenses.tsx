@@ -3,18 +3,27 @@ import { IExpense } from "../../model/expense.interface";
 import AddExpense from "./AddExpense/AddExpense";
 import ExpenseItem from "./ExpenseItem/ExpenseItem";
 
+let INTIAL_EXPENSES : Array<IExpense> = [
+    { id: "e001", title: "grocery", createdAt: new Date("Dec 20, 2019"), amount: 12.9 },
+    { id: "e002", title: "shopping", createdAt: new Date("Jan 2, 2020"), amount: 101 },
+    { id: "e003", title: "insurance", createdAt: new Date("Aug 12, 2021"), amount: 19.9 },
+]
+
 const Expenses = () => {
 
     const [showComp, setShowComp] = useState<boolean>(false)
-
-    let expenses : Array<IExpense> = [
-        { id: "e001", title: "grocery", createdAt: new Date("Dec 20, 2019"), amount: 12.9 },
-        { id: "e002", title: "shopping", createdAt: new Date("Jan 2, 2020"), amount: 101 },
-        { id: "e003", title: "insurance", createdAt: new Date("Aug 12, 2021"), amount: 19.9 },
-    ]
+    const [expenses, setExpenses] = useState<Array<IExpense>>(INTIAL_EXPENSES)
+   
 
     const clickHandler = () => {
         setShowComp(!showComp)
+    }
+
+    const addNewExpense = (expense : IExpense) => {
+        setExpenses((prevState) => {
+            return [expense, ...prevState]
+        })
+        setShowComp(false);
     }
 
     return (
@@ -28,7 +37,7 @@ const Expenses = () => {
                 </div>
             </div>
             <br/>
-            { showComp ? <AddExpense /> : ''}
+            { showComp ? <AddExpense onAddNewExpense={addNewExpense} /> : ''}
             <br/>
             <div className="row">
                 <ExpenseItem expense={expenses[0]} />

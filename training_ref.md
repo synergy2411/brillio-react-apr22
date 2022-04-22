@@ -110,3 +110,12 @@ html
 
 # to install bootstrap
 > npm i bootstrap@4
+
+# to install UUID
+> npm i uuid @types/uuid
+
+
+# Thumb rule to update the State
+- Whenever new state depends upon previous state, use the function syntax to change the state
+
+[0,1,2] -> [0,1,2,3]

@@ -1,18 +1,31 @@
 import React, { useState } from "react";
+import { v4 } from 'uuid';
+import { IExpense } from "../../../model/expense.interface";
 
-const AddExpense: React.FC<{}> = (props) => {
+const AddExpense: React.FC<{onAddNewExpense : (exp : IExpense) => void}> = (props) => {
 
     const [enteredTitle, setEnteredTitle] = useState<string>('');
+    const [enteredCreatedAt, setEnteredCreatedAt] = useState<string>('');
+    const [enteredAmount, setEnteredAmount] = useState<string>('')
 
     const addClickHandler = (event : React.SyntheticEvent) => {
         event.preventDefault();
-        console.log("Title : ", enteredTitle);
+        let newExpense : IExpense = {
+            amount : parseInt(enteredAmount),
+            title : enteredTitle,
+            createdAt : new Date(enteredCreatedAt),
+            id : v4()
+        }
+        props.onAddNewExpense(newExpense)
     }
 
     const titleChangeHandler = (event : React.ChangeEvent<HTMLInputElement>) => {
         // console.log("Title Value :", event.target.value)
         setEnteredTitle(event.target.value)
     }
+
+    const createdAtChangeHandler : React.ChangeEventHandler<HTMLInputElement> = event => setEnteredCreatedAt(event.target.value)
+    const amountChangeHandler : React.ChangeEventHandler<HTMLInputElement> = event => setEnteredAmount(event.target.value)
 
     return (
         <div className="row">
@@ -35,7 +48,31 @@ const AddExpense: React.FC<{}> = (props) => {
                                 </div>
                             </div>
                             {/* Created At */}
+                            <div className="form-group">
+                                <div className="row">
+                                    <div className="col-4">
+                                        <label htmlFor="createdAt">Date :</label>
+                                    </div>
+                                    <div className="col-8">
+                                        <input type="date" value={enteredCreatedAt} 
+                                            onChange = { createdAtChangeHandler }
+                                            max="2022-12-31" min="2019-01-01" className="form-control" />
+                                    </div>
+                                </div>
+                            </div>
                             {/* Amount */}
+                            <div className="form-group">
+                                <div className="row">
+                                    <div className="col-4">
+                                        <label htmlFor="amount">Amount :</label>
+                                    </div>
+                                    <div className="col-8">
+                                        <input type="number" step="0.1" min="0.1" 
+                                            className="form-control" value={enteredAmount}
+                                            onChange = {amountChangeHandler}/>
+                                    </div>
+                                </div>
+                            </div>
                             {/* Buttons */}
                             <div className="form-group">
                                 <div className="row">
