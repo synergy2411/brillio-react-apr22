@@ -14,7 +14,7 @@ const Expenses = () => {
 
     const [showComp, setShowComp] = useState<boolean>(false)
     const [expenses, setExpenses] = useState<Array<IExpense>>(INTIAL_EXPENSES)
-   
+   const [selectedYear, setSelectedYear] = useState<string>('2019')
 
     const clickHandler = () => {
         setShowComp(!showComp)
@@ -34,6 +34,13 @@ const Expenses = () => {
         setExpenses(prevState => prevState.filter(e => e.id !== id));
     }
 
+    const onYearSelected = (selYear : string) => {
+        setSelectedYear(selYear);
+    }
+    let filteredExpenses = expenses.filter(exp => {
+        return exp.createdAt.getFullYear().toString() === selectedYear
+    })
+    
     return (
         <div>
             <p className="display-4 text-center">Expenses App</p>
@@ -44,14 +51,14 @@ const Expenses = () => {
                         </button>
                 </div>
                 <div className='col-4'>
-                    <ExpenseFilter />
+                    <ExpenseFilter onSelectYear={onYearSelected} />
                 </div>
             </div>
             <br/>
             { showComp ? <AddExpense onAddNewExpense={addNewExpense} /> : ''}
             <br/>
             <div className="row">
-                { expenses.map(e => <ExpenseItem expense={e} 
+                { filteredExpenses.map(e => <ExpenseItem expense={e} 
                                         key={e.id} 
                                         onDeleteExpense = { onDeleteExpenseById }  />) }
             </div>
