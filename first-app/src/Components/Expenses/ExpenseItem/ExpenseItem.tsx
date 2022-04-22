@@ -1,5 +1,6 @@
 import React from "react";
 import { IExpense } from "../../../model/expense.interface";
+import ExpenseDate from "../ExpenseDate/ExpenseDate";
 
 // const ExpenseItem = (props : {expense : IExpense}) => {
 const ExpenseItem : React.FC<{expense : IExpense}> = (props) => {
@@ -12,7 +13,7 @@ const ExpenseItem : React.FC<{expense : IExpense}> = (props) => {
                 </div>
                 <div className="card-body">
                     <p>Amount : ${props.expense.amount}</p>
-                    <p>Created At : {props.expense.createdAt.toISOString()} </p>
+                    <ExpenseDate createdAt={props.expense.createdAt} />
                 </div>
             </div>
         </div>
