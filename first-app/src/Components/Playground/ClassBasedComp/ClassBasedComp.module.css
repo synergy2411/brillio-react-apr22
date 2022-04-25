@@ -1,0 +1,25 @@
+.heading {
+    text-align: center;
+}
+
+.my-button{
+    background-color: lightgrey;
+    color: darkblue;
+    box-shadow: darkgrey blue 3px 5px;
+    border-radius: 3px;
+    margin: 5px;
+    padding: 8px;
+}
+
+.my-button:hover{
+    cursor: pointer;
+    background-color: beige;
+}
+
+.item-not-added{
+    background-color: salmon;
+}
+
+.item-added {
+    background-color: aquamarine;
+}

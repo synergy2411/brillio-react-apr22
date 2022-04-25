@@ -135,3 +135,16 @@ html
 <Button onBtnClick={btnClick} text='My Awesome Button' color='blue' bgColor='grey' border='2px red solid' />
 <Button onBtnClick={btnClick} text='My Second Button' color='yellow'bgColor='tomamto' border='2px green solid'/>
 const btnClick = (event : React.FormEvent) => console.log("Clicked");
+
+
+# What are Pure Function?
+- returns the same result every time, given the same input e.g sum(n1, n2) => n1 + n2
+- never ever call non-pure functions eg. Math.random() / Date.now() / route transition / XHR etc
+
+# What is Side-effect?
+- Any code which is NOT responsibility of react
+- Renders the UI efficiently - Core responsibility of React
+- Side effects - setState(), XHR Call - should go inside the "Commit Phase"
+
+- CORS : Cross Origin Resource Sharing
+> npm i cors

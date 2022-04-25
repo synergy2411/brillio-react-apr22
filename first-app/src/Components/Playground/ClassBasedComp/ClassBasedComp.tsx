@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import classes from "./ClassBasedComp.module.css";
 
 interface Todo {
     id : string;
@@ -10,6 +11,7 @@ interface Todo {
 interface CompState {
     todos: Array<Todo>;
     item: string;
+    isItemAdded : boolean;
 }
 
 class ClassBasedComp extends React.Component {
@@ -20,7 +22,8 @@ class ClassBasedComp extends React.Component {
         super(props);
         this.state = {
             todos: [{ id : 'T001', title: "to pot the plant", completed: false }],
-            item: ''
+            item: '',
+            isItemAdded : false
         }
         console.log("[CONSTRUCTOR]")
     }
@@ -72,17 +75,39 @@ class ClassBasedComp extends React.Component {
         console.log("[COMPONENT WILL UNMOUNT]");
     }
 
+    itemBlurHandler = (event : React.ChangeEvent<HTMLInputElement>) => {
+        if(event.target.value.trim() === '' ){
+            this.setState({
+                isItemAdded : false
+            })
+        }else{
+            this.setState({
+                isItemAdded : true
+            })
+        }
+    }
+
     render(): React.ReactNode {
         console.log("[RENDER]");
-        
+        const styles = {
+            border : '2px green solid',
+            backgroundColor : "lightgrey",
+            boxShadow : "darkgrey 2px 5px"
+        }
         return (
-            <div>
-                <h4>Class based component loaded...</h4>
+            <div style={styles}>
+                <h4 className={classes['heading']}>Class based component loaded...</h4>
                 <form>
                     <input value={this.state.item} type="text" 
                         name='todo-item' 
-                        onChange={this.itemChangeHandler.bind(this)} />
-                    <button onClick={this.onAddItem}>Add Item</button>
+                        onChange={this.itemChangeHandler.bind(this)} 
+                        onBlur={this.itemBlurHandler}
+                        className={
+                            this.state.isItemAdded ? 
+                                classes['item-added'] : 
+                                classes['item-not-added']}/>
+
+                    <button className={classes['my-button']} onClick={this.onAddItem}>Add Item</button>
                 </form>
                 <ul>
                     {this.state.todos.map(todo => (
