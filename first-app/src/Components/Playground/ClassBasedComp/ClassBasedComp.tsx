@@ -3,6 +3,12 @@ import axios from 'axios';
 import styled from 'styled-components';
 import classes from "./ClassBasedComp.module.css";
 
+const Title = styled.h4`
+text-align: center;
+color : darkblue;
+`
+
+
 interface Todo {
     id : string;
     title: string;
@@ -88,13 +94,10 @@ class ClassBasedComp extends React.Component {
         }
     }
 
+
     render(): React.ReactNode {
         console.log("[RENDER]");
-        const Title = styled.h4`
-            text-align: center;
-            color : darkblue;
-        `
-
+       
         const styles = {
             border : '2px green solid',
             backgroundColor : "lightgrey",

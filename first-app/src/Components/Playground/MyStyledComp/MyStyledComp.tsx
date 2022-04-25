@@ -1,7 +1,5 @@
 import styled from 'styled-components';
-
-const MyStyledComponent: React.FC<{}> = (props) => {
-    let Wrapper = styled.div`
+let Wrapper = styled.div`
         border: 2px red solid;
         width: 60vw;
         height: 60vh;
@@ -17,13 +15,19 @@ const MyStyledComponent: React.FC<{}> = (props) => {
           }
     `;
 
-    let MyParagraph = styled.p`
+let MyParagraph = styled.p`
           text-align : center;
     `
 
+    const generateError = () => {
+        // nonCallbale()
+    }
+
+const MyStyledComponent: React.FC<{}> = (props) => {
     return (
         <Wrapper>
             <MyParagraph>My Awesome Styled Paragraph</MyParagraph>
+            <button onClick={generateError}>Error Generator</button>
         </Wrapper>
     )
 }
