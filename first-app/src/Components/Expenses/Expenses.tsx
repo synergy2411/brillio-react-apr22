@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { IExpense } from "../../model/expense.interface";
-import Button from '../Button/Button';
 import AddExpense from "./AddExpense/AddExpense";
 import ExpenseFilter from './ExpenseFilter/ExpenseFilter';
 import ExpenseItem from "./ExpenseItem/ExpenseItem";
