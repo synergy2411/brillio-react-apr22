@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
 import classes from "./ClassBasedComp.module.css";
 
 interface Todo {
@@ -89,6 +90,11 @@ class ClassBasedComp extends React.Component {
 
     render(): React.ReactNode {
         console.log("[RENDER]");
+        const Title = styled.h4`
+            text-align: center;
+            color : darkblue;
+        `
+
         const styles = {
             border : '2px green solid',
             backgroundColor : "lightgrey",
@@ -96,7 +102,7 @@ class ClassBasedComp extends React.Component {
         }
         return (
             <div style={styles}>
-                <h4 className={classes['heading']}>Class based component loaded...</h4>
+                <Title>Class based component loaded...</Title>
                 <form>
                     <input value={this.state.item} type="text" 
                         name='todo-item' 
