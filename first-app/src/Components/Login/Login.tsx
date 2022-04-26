@@ -17,13 +17,18 @@ const Login = () => {
     let passwordIsValidAndBlurred = !passwordIsValid && passwordInputBlur;
 
     let formIsValid = emailIsValid && emailIncludeAtSign && passwordIsValid;
-
-    let emailClasses =  emailIsValid ? 
-                            `${classes['valid']}` : 
-                            `${classes['invalid']}`;
-    let passwordClasses =  passwordIsValid ? 
-                            `${classes['valid']}` : 
-                            `${classes['invalid']}`;
+    let emailClasses = 'form-control';
+    let passwordClasses = 'form-control';
+    if(emailInputBlur){
+        emailClasses =  emailIsValid && emailIncludeAtSign? 
+                                `${classes['valid']}` : 
+                                `${classes['invalid']}`;
+    }
+    if(passwordInputBlur){
+        passwordClasses =  passwordIsValid ? 
+                                `${classes['valid']}` : 
+                                `${classes['invalid']}`;
+    }
 
     const nameChangeHandler : React.ChangeEventHandler<HTMLInputElement> = (event) => {
         setEnteredEmail(event.target.value);
