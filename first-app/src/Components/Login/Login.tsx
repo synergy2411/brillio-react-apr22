@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import classes from './Login.module.css';
 
 const Login = () => {
+
+    const cnfPasswordInputRef = useRef<HTMLInputElement>(null)
+
     const [enteredEmail, setEnteredEmail] = useState<string>('')
     const [enteredPassword, setEnteredPassword] = useState<string>('')
 
@@ -42,6 +45,7 @@ const Login = () => {
         event.preventDefault();
         console.log("Email : ", enteredEmail);
         console.log("Password : ", enteredPassword);
+        console.log("Confirm Password : ", cnfPasswordInputRef.current?.value)
     }
 
     const passwordChangeHandler : React.ChangeEventHandler<HTMLInputElement> = (event) => {
@@ -88,6 +92,17 @@ const Login = () => {
                                     onBlur={passwordBlurHandler} />
                                     {passwordIsValidAndBlurred && <p className="alert alert-danger">Password must have 6 characters at least.</p>}
                             </div>
+                            {/* confirm password */}
+                            <div className="form-group">
+                                <label htmlFor="cnfpassword"> Confirm Password :</label>
+                                <input type="text" 
+                                    name="cnf-password" 
+                                    id="cnf-password" 
+                                    className="form-control"
+                                    ref={cnfPasswordInputRef}
+                                    />
+                            </div>
+
                             {/* buttons */}
                             <div className="form-group">
                                 <button disabled={!formIsValid} type="submit" 

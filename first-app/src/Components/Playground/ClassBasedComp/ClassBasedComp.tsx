@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef, useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import classes from "./ClassBasedComp.module.css";

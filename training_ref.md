@@ -158,3 +158,11 @@ const btnClick = (event : React.FormEvent) => console.log("Clicked");
 # Forms
 
 # Hooks
+- useEffect(cb) : runs after intial rendering, and subsequent component rendering
+- useEffect(cb, []) : runs only after initial rendering, not runs for any subsequent rendering
+- useEffect(cb, [Dependencies]) : runs after initial rendering as well as after every change in dependency
+- useEffect(cb => cleanUpFn, [Dependencies]): 
+    : At initial rendering, callback function will fire; 
+    : Dependency will change- setState() called;
+    : Cleanup Function will fire;
+    : Callback fires again.
