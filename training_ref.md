@@ -148,3 +148,13 @@ const btnClick = (event : React.FormEvent) => console.log("Clicked");
 
 - CORS : Cross Origin Resource Sharing
 > npm i cors
+
+# React App Debugging 
+1. Attaching the debugger statement - setup breakpoints in App
+2. React Developers Tool - install it from Chrome Web store
+3. console debugging
+
+
+# Forms
+
+# Hooks

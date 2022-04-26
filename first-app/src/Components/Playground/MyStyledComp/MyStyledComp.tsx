@@ -12,7 +12,9 @@ const MyStyledComponent: React.FC<{}> = (props) => {
 const [ count, setCount ]= useState(0);
 
     const increaseHandler = () => {
-        setCount(prevCounter => prevCounter + 1)
+        setCount(prevCounter => {
+            return prevCounter+1
+        });
     }
 
     if(count > 3){

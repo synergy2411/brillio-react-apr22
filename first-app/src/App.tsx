@@ -3,19 +3,23 @@ import Expenses from './Components/Expenses/Expenses';
 import ClassBasedComp from './Components/Playground/ClassBasedComp/ClassBasedComp';
 import MyStyledComponent from './Components/Playground/MyStyledComp/MyStyledComp';
 import ErrorBoundary from './Components/ErrorBoundary/ErrorBoundary';
+import Login from './Components/Login/Login';
 
 function App() {
   
   return (
     <div className="container">
-      <ErrorBoundary>
+
+    <Login />
+
+      {/* <ErrorBoundary>
         <MyStyledComponent/>
-      </ErrorBoundary>
+      </ErrorBoundary> */}
     <hr />
 
     {/* <ClassBasedComp> </ClassBasedComp> */}
 
-      <Expenses />
+      {/* <Expenses /> */}
     </div>
   );
 }
