@@ -1,14 +1,29 @@
 import { useState } from "react";
+import classes from './Login.module.css';
 
 const Login = () => {
     const [enteredEmail, setEnteredEmail] = useState<string>('')
+    const [enteredPassword, setEnteredPassword] = useState<string>('')
+
     const [emailInputBlur, setEmailInputBlur] = useState<boolean>(false);
+    const [passwordInputBlur, setPasswordInputBlur] = useState<boolean>(false);
 
     let emailIsValid = enteredEmail.trim() !== '';
     let emailIncludeAtSign = enteredEmail.includes('@');
     let emailIsValidAndBlurred = !emailIsValid && emailInputBlur;
     let emailIncludeAtSignAndBlurred = !emailIncludeAtSign && emailInputBlur;
-    let formIsValid = emailIsValid && emailIncludeAtSign;
+
+    let passwordIsValid = enteredPassword.trim().length >= 6;
+    let passwordIsValidAndBlurred = !passwordIsValid && passwordInputBlur;
+
+    let formIsValid = emailIsValid && emailIncludeAtSign && passwordIsValid;
+
+    let emailClasses =  emailIsValid ? 
+                            `${classes['valid']}` : 
+                            `${classes['invalid']}`;
+    let passwordClasses =  passwordIsValid ? 
+                            `${classes['valid']}` : 
+                            `${classes['invalid']}`;
 
     const nameChangeHandler : React.ChangeEventHandler<HTMLInputElement> = (event) => {
         setEnteredEmail(event.target.value);
@@ -21,6 +36,15 @@ const Login = () => {
     const submitHandler : React.FormEventHandler = (event) => {
         event.preventDefault();
         console.log("Email : ", enteredEmail);
+        console.log("Password : ", enteredPassword);
+    }
+
+    const passwordChangeHandler : React.ChangeEventHandler<HTMLInputElement> = (event) => {
+        setEnteredPassword(event.target.value);
+    }
+
+    const passwordBlurHandler = () => {
+        setPasswordInputBlur(true)
     }
 
     return (
@@ -34,11 +58,11 @@ const Login = () => {
                         <form onSubmit={submitHandler}>
                             {/* email */}
                             <div className="form-group">
-                                <label htmlFor="email">Email :</label>
-                                <input type="email" 
-                                    name="email" 
-                                    id="email" 
-                                    className="form-control"
+                                <label htmlFor="username">Email :</label>
+                                <input type="text" 
+                                    name="username" 
+                                    id="username" 
+                                    className={emailClasses}
                                     value={enteredEmail}
                                     onChange={nameChangeHandler}
                                     onBlur={nameBlurHandler} />
@@ -48,9 +72,21 @@ const Login = () => {
 
                             </div>
                             {/* password */}
+                            <div className="form-group">
+                                <label htmlFor="password"> Password :</label>
+                                <input type="password" 
+                                    name="password" 
+                                    id="password" 
+                                    className={passwordClasses}
+                                    onChange={passwordChangeHandler}
+                                    value={enteredPassword}
+                                    onBlur={passwordBlurHandler} />
+                                    {passwordIsValidAndBlurred && <p className="alert alert-danger">Password must have 6 characters at least.</p>}
+                            </div>
                             {/* buttons */}
                             <div className="form-group">
-                                <button disabled={!formIsValid} type="submit" className="btn btn-primary">Login</button>
+                                <button disabled={!formIsValid} type="submit" 
+                                    className={classes['my-button']}>Login</button>
                             </div>
                         </form>
                     </div>
