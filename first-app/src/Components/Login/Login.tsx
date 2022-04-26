@@ -4,23 +4,24 @@ const Login = () => {
     const [enteredEmail, setEnteredEmail] = useState<string>('')
     const [emailInputBlur, setEmailInputBlur] = useState<boolean>(false);
 
-    // const [emailIsValid, setEmailIsValid] = useState<boolean>(true);
+    let emailIsValid = enteredEmail.trim() !== '';
+    let emailIncludeAtSign = enteredEmail.includes('@');
+    let emailIsValidAndBlurred = !emailIsValid && emailInputBlur;
+    let emailIncludeAtSignAndBlurred = !emailIncludeAtSign && emailInputBlur;
+    let formIsValid = emailIsValid && emailIncludeAtSign;
 
     const nameChangeHandler : React.ChangeEventHandler<HTMLInputElement> = (event) => {
         setEnteredEmail(event.target.value);
-    }
-
-    const submitHandler : React.FormEventHandler = (event) => {
-        event.preventDefault();
-        console.log("Email : ", enteredEmail);
     }
 
     const nameBlurHandler = () => {
         setEmailInputBlur(true)
     }
 
-    let emailIsValid = enteredEmail.trim() !== '';
-    let emailIsValidAndBlurred = !emailIsValid && emailInputBlur;
+    const submitHandler : React.FormEventHandler = (event) => {
+        event.preventDefault();
+        console.log("Email : ", enteredEmail);
+    }
 
     return (
         <div className="row">
@@ -43,12 +44,13 @@ const Login = () => {
                                     onBlur={nameBlurHandler} />
                                     {/* {!emailIsValid ? <p>Email field is mandatory.</p> : ''} */}
                                     {emailIsValidAndBlurred && <p className="alert alert-danger">Email is required.</p>}
+                                    {emailIncludeAtSignAndBlurred && <p className="alert alert-danger">Email must be in proper format.</p>}
 
                             </div>
                             {/* password */}
                             {/* buttons */}
                             <div className="form-group">
-                                <button disabled={!emailIsValid} type="submit" className="btn btn-primary">Login</button>
+                                <button disabled={!formIsValid} type="submit" className="btn btn-primary">Login</button>
                             </div>
                         </form>
                     </div>
