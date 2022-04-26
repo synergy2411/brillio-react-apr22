@@ -159,10 +159,13 @@ const btnClick = (event : React.FormEvent) => console.log("Clicked");
 
 # Hooks
 - useEffect(cb) : runs after intial rendering, and subsequent component rendering
-- useEffect(cb, []) : runs only after initial rendering, not runs for any subsequent rendering
-- useEffect(cb, [Dependencies]) : runs after initial rendering as well as after every change in dependency
-- useEffect(cb => cleanUpFn, [Dependencies]): 
+- useEffect(cb, []) - componentDidMount() : runs only after initial rendering, not runs for any subsequent rendering
+- useEffect(cb, [Dependencies]) - componentDidUpdate() : runs after initial rendering as well as after every change in dependency
+- useEffect(cb => cleanUpFn, [Dependencies]): - componentWillUnmount()
     : At initial rendering, callback function will fire; 
     : Dependency will change- setState() called;
     : Cleanup Function will fire;
     : Callback fires again.
+
+
+    https://api.github.com/users/synergy2411/repos
