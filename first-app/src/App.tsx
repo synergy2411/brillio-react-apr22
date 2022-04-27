@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Expenses from './Components/Expenses/Expenses';
 import ClassBasedComp from './Components/Playground/ClassBasedComp/ClassBasedComp';
 import MyStyledComponent from './Components/Playground/MyStyledComp/MyStyledComp';
@@ -8,11 +8,13 @@ import UseStateDemo from './Components/Playground/Hooks/UseStateDemo';
 import UseEffectDemo from './Components/Playground/Hooks/UseEffectDemo';
 
 function App() {
-  
+    const [toggleComp, setToggleComp] = useState<boolean>(true);
+
   return (
     <div className="container">
+      <button onClick={() => (setToggleComp(!toggleComp))}>Toggle Comp</button>
 
-    <UseEffectDemo />
+    { toggleComp && <UseEffectDemo />}
 
     {/* <UseStateDemo /> */}
 

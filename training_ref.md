@@ -158,14 +158,31 @@ const btnClick = (event : React.FormEvent) => console.log("Clicked");
 # Forms
 
 # Hooks
+
+# Why useEffect?
+- fetching data
+- update DOM
+- set the State
+- alternate of life cycle events
+- returns cleanup function : to clean up the resources eg. timers, mutuation, subscription etc
+- to run side-effects
+
+
 - useEffect(cb) : runs after intial rendering, and subsequent component rendering
+> Usage : rarely used
+
 - useEffect(cb, []) - componentDidMount() : runs only after initial rendering, not runs for any subsequent rendering
+> Usage : when you want to fetch remote server data only once
+
 - useEffect(cb, [Dependencies]) - componentDidUpdate() : runs after initial rendering as well as after every change in dependency
+> Usage : setting the overall form validity, which depends on various form elements state
+
 - useEffect(cb => cleanUpFn, [Dependencies]): - componentWillUnmount()
     : At initial rendering, callback function will fire; 
     : Dependency will change- setState() called;
     : Cleanup Function will fire;
     : Callback fires again.
-
+    : Cleanup will also fire just before the component is about to destory
+> Usage : to unsubscribe/ release the resources
 
     https://api.github.com/users/synergy2411/repos

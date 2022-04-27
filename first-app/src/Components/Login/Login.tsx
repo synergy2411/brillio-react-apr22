@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import classes from './Login.module.css';
 
 const Login = () => {
@@ -7,9 +7,12 @@ const Login = () => {
 
     const [enteredEmail, setEnteredEmail] = useState<string>('')
     const [enteredPassword, setEnteredPassword] = useState<string>('')
+    const [formState, setFormState] = useState<boolean>(false);
 
     const [emailInputBlur, setEmailInputBlur] = useState<boolean>(false);
     const [passwordInputBlur, setPasswordInputBlur] = useState<boolean>(false);
+
+    
 
     let emailIsValid = enteredEmail.trim() !== '';
     let emailIncludeAtSign = enteredEmail.includes('@');
@@ -19,7 +22,14 @@ const Login = () => {
     let passwordIsValid = enteredPassword.trim().length >= 6;
     let passwordIsValidAndBlurred = !passwordIsValid && passwordInputBlur;
 
-    let formIsValid = emailIsValid && emailIncludeAtSign && passwordIsValid;
+    useEffect(() => {
+        if(enteredEmail.trim() !== '' && enteredEmail.includes('@') && enteredPassword.trim().length >= 6){
+            setFormState(true)
+        }else{
+            setFormState(false)
+        }
+    }, [enteredEmail, enteredPassword])
+
     let emailClasses = 'form-control';
     let passwordClasses = 'form-control';
     if(emailInputBlur){
@@ -105,7 +115,7 @@ const Login = () => {
 
                             {/* buttons */}
                             <div className="form-group">
-                                <button disabled={!formIsValid} type="submit" 
+                                <button disabled={!formState} type="submit" 
                                     className={classes['my-button']}>Login</button>
                             </div>
                         </form>
