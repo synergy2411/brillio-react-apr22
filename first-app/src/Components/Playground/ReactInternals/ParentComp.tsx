@@ -9,7 +9,7 @@ const ParentComp = () => {
     // const changeValue = useCallback(() => {
     //     console.log("The Value changes", toggle)
     // }, [toggle])
-    
+
     const changeValue = useMemo(() => {
         return () => console.log("The Value changes", toggle)
     }, [toggle])
@@ -17,13 +17,13 @@ const ParentComp = () => {
     console.log("Parent Component");
     return (
         <>
-        <h3>Parent Component</h3>
-        <button onClick={() => setShow(!show)}>Show</button>
-        <button onClick={() => setToggle(!toggle)}>Toggle</button>
+            <h3>Parent Component</h3>
+            <button onClick={() => setShow(!show)}>Show</button>
+            <button onClick={() => setToggle(!toggle)}>Toggle</button>
 
             <ChildAComp show={show} />
-            
-            <ChildBComp onChangeValue={changeValue}/>
+
+            <ChildBComp onChangeValue={changeValue} />
         </>
     )
 

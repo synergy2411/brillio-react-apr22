@@ -1,0 +1,24 @@
+{
+  "posts": [
+    {
+      "id": "P001",
+      "title": "React Course",
+      "body": "new body added"
+    },
+    {
+      "id": "P002",
+      "title": "Node Course",
+      "body": "I like this Course"
+    },
+    {
+      "id": "P003",
+      "title": "React 101",
+      "body": "Great Course"
+    },
+    {
+      "title": "new title",
+      "body": "...",
+      "id": "0ZG77MZ"
+    }
+  ]
+}
