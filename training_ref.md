@@ -186,3 +186,6 @@ const btnClick = (event : React.FormEvent) => console.log("Clicked");
 > Usage : to unsubscribe/ release the resources
 
     https://api.github.com/users/synergy2411/repos
+
+
+- useReducer : when you have complex state to manage

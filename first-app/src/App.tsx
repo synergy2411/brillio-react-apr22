@@ -6,15 +6,20 @@ import ErrorBoundary from './Components/ErrorBoundary/ErrorBoundary';
 import Login from './Components/Login/Login';
 import UseStateDemo from './Components/Playground/Hooks/UseStateDemo';
 import UseEffectDemo from './Components/Playground/Hooks/UseEffectDemo';
+import UseReducerDemo from './Components/Playground/Hooks/UseReducerDemo';
 
 function App() {
-    const [toggleComp, setToggleComp] = useState<boolean>(true);
+    // const [toggleComp, setToggleComp] = useState<boolean>(true);
 
   return (
     <div className="container">
-      <button onClick={() => (setToggleComp(!toggleComp))}>Toggle Comp</button>
 
-    { toggleComp && <UseEffectDemo />}
+      <UseReducerDemo />
+
+
+      {/* <button onClick={() => (setToggleComp(!toggleComp))}>Toggle Comp</button>
+
+    { toggleComp && <UseEffectDemo />} */}
 
     {/* <UseStateDemo /> */}
 
