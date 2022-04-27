@@ -14,7 +14,7 @@ function App() {
   return (
     <div className="container">
 
-      <UseReducerDemo />
+      {/* <UseReducerDemo /> */}
 
 
       {/* <button onClick={() => (setToggleComp(!toggleComp))}>Toggle Comp</button>
@@ -32,7 +32,7 @@ function App() {
 
     {/* <ClassBasedComp> </ClassBasedComp> */}
 
-      {/* <Expenses /> */}
+      <Expenses />
     </div>
   );
 }

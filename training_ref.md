@@ -189,3 +189,5 @@ const btnClick = (event : React.FormEvent) => console.log("Clicked");
 
 
 - useReducer : when you have complex state to manage
+
+- Context API - solves the problem of "prop-drilling"

@@ -3,6 +3,7 @@ import { IExpense } from "../../model/expense.interface";
 import AddExpense from "./AddExpense/AddExpense";
 import ExpenseFilter from './ExpenseFilter/ExpenseFilter';
 import ExpenseItem from "./ExpenseItem/ExpenseItem";
+import AuthContext from '../../context/AuthContext';
 
 let INTIAL_EXPENSES: Array<IExpense> = [
     { id: "e001", title: "grocery", createdAt: new Date("Dec 20, 2019"), amount: 12.9 },
@@ -42,7 +43,7 @@ const Expenses = () => {
     })
 
     return (
-        <div>
+        <AuthContext.Provider value={{ isLoggedIn: false }}>
             <p className="display-4 text-center">Expenses App</p>
             <div className="row">
                 <div className="col-4 offset-4">
@@ -62,7 +63,7 @@ const Expenses = () => {
                     key={e.id}
                     onDeleteExpense={onDeleteExpenseById} />)}
             </div>
-        </div>
+        </AuthContext.Provider>
     )
 }
 
