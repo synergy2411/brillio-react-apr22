@@ -1,27 +1,65 @@
-import React, {useEffect, useState} from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import axios from 'axios';
 import { IPost } from '../../model/post.model';
+import PostItem from './PostItem/PostItem';
+import AddPost from './AddPost/AddPost';
+import EditPost from './EditPost/EditPost';
 
-const BASE_URL : string = "http://localhost:3001/posts";
+const BASE_URL: string = "http://localhost:3001/posts";
+
+const fetchData = (): Promise<IPost[]> => {
+    return new Promise((resolve, reject) => {
+        axios.get(BASE_URL)
+            .then(response => {
+                resolve(response.data);
+            })
+            .catch(err => reject(err))
+    })
+}
 
 const Posts = () => {
 
     const [posts, setPosts] = useState<Array<IPost>>([]);
+    const [selectedId, setSelectedId] = useState<string>('')
+
+    const [showForm, setShowForm] = useState<boolean>(false);
 
     useEffect(() => {
-        axios.get(BASE_URL)
-            .then(response => {
-                setPosts(response.data)
-            })
+        fetchData()
+            .then((posts) => setPosts(posts))
             .catch(console.log)
     }, [])
 
+    const onAddData = () => {
+        setShowForm(false)
+        fetchData()
+            .then((posts) => setPosts(posts))
+            .catch(console.log)
+    }
+
+    const onItemSelect = (id: string) => {
+        setSelectedId(id)
+    }
     return (
-        <div className='row'>
-            {
-                posts.map(post => <div className='col-4' key={post.id}> {post.title} </div>)
-            }
-        </div>
+        <Fragment>
+            <div className="row">
+                <div className="col-6 offset-3">
+                    <button className='btn btn-primary btn-block' onClick={() => setShowForm(!showForm)}>
+                        {showForm ? 'Hide Form' : 'Add Item'}
+                    </button>
+                </div>
+            </div>
+            {showForm && <AddPost onAddData={onAddData} />}
+            <br />
+            {selectedId !== '' && <EditPost id={selectedId} />}
+            <br />
+
+            <div className='row'>
+                {
+                    posts.map(post => <PostItem key={post.id} post={post} onItemSelect={onItemSelect} />)
+                }
+            </div>
+        </Fragment>
     )
 
 }
