@@ -191,3 +191,15 @@ const btnClick = (event : React.FormEvent) => console.log("Clicked");
 - useReducer : when you have complex state to manage
 
 - Context API - solves the problem of "prop-drilling"
+
+- useMemo -> return the memoized value
+
+- useCallback -> return the memoized callback function
+
+const memoizedFn = useMemo(() => Function, [])
+
+const memoizedValue = useMemo(() => 2+2, [])        // 4
+
+const memoizedFn = useCallback(()=>{}, [])
+
+useMemo(() => Function, []) = useCallback(()=>{}, [])
