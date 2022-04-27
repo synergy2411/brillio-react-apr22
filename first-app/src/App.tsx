@@ -7,6 +7,7 @@ import Login from './Components/Login/Login';
 import UseStateDemo from './Components/Playground/Hooks/UseStateDemo';
 import UseEffectDemo from './Components/Playground/Hooks/UseEffectDemo';
 import UseReducerDemo from './Components/Playground/Hooks/UseReducerDemo';
+import ParentComp from './Components/Playground/ReactInternals/ParentComp';
 
 function App() {
     // const [toggleComp, setToggleComp] = useState<boolean>(true);
@@ -32,7 +33,8 @@ function App() {
 
     {/* <ClassBasedComp> </ClassBasedComp> */}
 
-      <Expenses />
+      {/* <Expenses /> */}
+      <ParentComp />
     </div>
   );
 }
