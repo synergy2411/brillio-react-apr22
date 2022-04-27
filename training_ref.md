@@ -203,3 +203,9 @@ const memoizedValue = useMemo(() => 2+2, [])        // 4
 const memoizedFn = useCallback(()=>{}, [])
 
 useMemo(() => Function, []) = useCallback(()=>{}, [])
+
+
+# to install json server
+> npm i json-server -g
+> create db.json
+> json-server --watch db.json
