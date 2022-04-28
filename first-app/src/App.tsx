@@ -1,4 +1,5 @@
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import AddUser from './Components/Users/AddNewUser/AddUser';
 import Users from './Components/Users/Users';
 
 
@@ -9,11 +10,13 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    <ApolloProvider client={client}>
-      <div className="container">
-        <Users />
+    <div className="container">
+        <ApolloProvider client={client}>
+          <Users />
+          <hr />
+          <AddUser />
+        </ApolloProvider>
       </div>
-    </ApolloProvider>
   );
 }
 
