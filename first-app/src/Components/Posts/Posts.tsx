@@ -30,15 +30,22 @@ const Posts = () => {
             .catch(console.log)
     }, [])
 
-    const onAddData = () => {
-        setShowForm(false)
+    useEffect(()=>{
         fetchData()
             .then((posts) => setPosts(posts))
             .catch(console.log)
+    }, [showForm, selectedId])
+
+    const onAddData = () => {
+        setShowForm(false)
     }
 
     const onItemSelect = (id: string) => {
         setSelectedId(id)
+    }
+
+    const onDeleteItem = () => {
+        setSelectedId('');
     }
     return (
         <Fragment>
@@ -51,7 +58,7 @@ const Posts = () => {
             </div>
             {showForm && <AddPost onAddData={onAddData} />}
             <br />
-            {selectedId !== '' && <EditPost id={selectedId} />}
+            {selectedId !== '' && <EditPost id={selectedId} onDeleteItem={onDeleteItem} />}
             <br />
 
             <div className='row'>

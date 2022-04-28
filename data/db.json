@@ -6,34 +6,9 @@
       "body": "new body added"
     },
     {
-      "id": "P002",
-      "title": "Node Course",
-      "body": "I like this Course"
-    },
-    {
-      "id": "P003",
-      "title": "React 101",
-      "body": "Great Course"
-    },
-    {
-      "title": "new title",
-      "body": "...",
-      "id": "0ZG77MZ"
-    },
-    {
-      "title": "bag",
-      "body": "....",
-      "id": "I4IKiUp"
-    },
-    {
-      "title": "bag",
-      "body": "....",
-      "id": "9wyJbcS"
-    },
-    {
-      "title": "Angular",
-      "body": "Aweosme course",
-      "id": "XFP129t"
+      "title": "Angular 101",
+      "body": "nice course",
+      "id": "wa0JkV0"
     }
   ]
 }

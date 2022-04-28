@@ -209,3 +209,8 @@ useMemo(() => Function, []) = useCallback(()=>{}, [])
 > npm i json-server -g
 > create db.json
 > json-server --watch db.json
+
+
+# REST API Call
+# GraphQL Integration in React
+# Creating SPA
