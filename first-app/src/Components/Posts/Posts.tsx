@@ -44,7 +44,7 @@ const Posts = () => {
         setSelectedId(id)
     }
 
-    const onDeleteItem = () => {
+    const onDeleteOrEditItem = () => {
         setSelectedId('');
     }
     return (
@@ -58,7 +58,7 @@ const Posts = () => {
             </div>
             {showForm && <AddPost onAddData={onAddData} />}
             <br />
-            {selectedId !== '' && <EditPost id={selectedId} onDeleteItem={onDeleteItem} />}
+            {selectedId !== '' && <EditPost id={selectedId} onDeleteOrEditItem={onDeleteOrEditItem} />}
             <br />
 
             <div className='row'>
