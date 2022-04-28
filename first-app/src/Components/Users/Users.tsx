@@ -1,15 +1,8 @@
 import { useEffect, useState } from 'react';
-import { gql, useQuery, useLazyQuery } from '@apollo/client';
 import { Spinner } from 'react-bootstrap';
 import { IUser } from '../../model/user.model';
-
-const FETCH_USERS = gql`
-    query{
-        users{
-            id username password email
-        }
-}
-`
+import { gql, useLazyQuery } from '@apollo/client';
+import AddUser from './AddNewUser/AddUser';
 
 const SEARCH_USER = gql`
 query onSerachUser($name : String) {
@@ -21,13 +14,12 @@ query onSerachUser($name : String) {
 
 const Users = () => {
 
-    const [username, setUsername] = useState<string>('')
+    // const {error, loading, data } = useGetAllUsers()
 
-    // const { error, loading, data } = useQuery(FETCH_USERS)
-    
-    const [ fetchUserQuery , { error, loading, data }] = useLazyQuery(SEARCH_USER, {
-        variables : {
-            name : username
+    const [username, setUsername] = useState<string>('')
+    const [fetchUserQuery, {error, data, loading}] = useLazyQuery(SEARCH_USER, {
+        variables: {
+            name: username
         }
     })
 
@@ -50,6 +42,8 @@ const Users = () => {
     return (
         <div className='row'>
             <div className="col-6 offset-3">
+                <AddUser />
+                <hr />
                 <input type="text" className='form-control' value={username} onChange={usernameChangeHandler} />
                 <ul className='list-group'>
                     {data && <p>{data.user.username.toUpperCase()}</p>}

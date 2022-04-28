@@ -43,6 +43,7 @@ const rootValue = {
     users: () => users,
     createUser: (args) => {
         const { email, username, password } = args.data;
+        console.log(email, username, password);
         const newUser = {
             id: v4(),
             email,
