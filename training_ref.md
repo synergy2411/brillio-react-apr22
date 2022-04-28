@@ -214,3 +214,12 @@ useMemo(() => Function, []) = useCallback(()=>{}, [])
 # REST API Call
 # GraphQL Integration in React
 # Creating SPA
+
+# What is GraphQL?
+- Specifcations for creating Endpoint
+- Query Language
+- Single Endpoint
+- No over-fetching / No under-fetching
+
+# to install @apollo/client
+- npm i @apollo/client@3.5.10

@@ -1,10 +1,19 @@
-import Posts from "./Components/Posts/Posts";
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import Users from './Components/Users/Users';
+
+
+const client = new ApolloClient({
+  uri: "http://localhost:9090/gq",
+  cache: new InMemoryCache()
+})
 
 function App() {
   return (
-    <div className="container">
-      <Posts />
-    </div>
+    <ApolloProvider client={client}>
+      <div className="container">
+        <Users />
+      </div>
+    </ApolloProvider>
   );
 }
 
