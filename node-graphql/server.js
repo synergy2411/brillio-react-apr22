@@ -55,7 +55,15 @@ const rootValue = {
     },
     user: args => {
         const { name } = args.search
-        return users.find(user => user.username.toLowerCase().includes(name.toLowerCase()))
+        console.log(name);
+        if(name){
+            const foundUser = users.find(user => user.username.toLowerCase().includes(name.toLowerCase()))
+            if(foundUser){
+                return foundUser
+            }
+            throw new Error("Unable to find user for - " + name)
+        }
+        throw new Error("Name filed is missing")
     }
 }
 

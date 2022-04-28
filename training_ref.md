@@ -223,3 +223,6 @@ useMemo(() => Function, []) = useCallback(()=>{}, [])
 
 # to install @apollo/client
 - npm i @apollo/client@3.5.10
+
+# to install router
+- npm i react-router-dom@5.2.0 @types/react-router-dom
