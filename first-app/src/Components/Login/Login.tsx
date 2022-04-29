@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { Prompt } from "react-router-dom";
 import classes from './Login.module.css';
 
 const Login = () => {
@@ -8,11 +9,10 @@ const Login = () => {
     const [enteredEmail, setEnteredEmail] = useState<string>('')
     const [enteredPassword, setEnteredPassword] = useState<string>('')
     const [formState, setFormState] = useState<boolean>(false);
+    const [showPrompt, setShowPrompt] = useState<boolean>(false);
 
     const [emailInputBlur, setEmailInputBlur] = useState<boolean>(false);
     const [passwordInputBlur, setPasswordInputBlur] = useState<boolean>(false);
-
-    
 
     let emailIsValid = enteredEmail.trim() !== '';
     let emailIncludeAtSign = enteredEmail.includes('@');
@@ -66,15 +66,20 @@ const Login = () => {
         setPasswordInputBlur(true)
     }
 
+    const formBlurHandler = () => {
+        setShowPrompt(true)
+    }
+
     return (
         <div className="row">
+            <Prompt when={showPrompt} message="Are you sure to leave this page?"/>
             <div className="col-6 offset-3">
                 <div className="card">
                     <div className="card-header">
                         <h4 className="text-center">Login Form</h4>
                     </div>
                     <div className="card-body">
-                        <form onSubmit={submitHandler}>
+                        <form onSubmit={submitHandler} onBlur={formBlurHandler}>
                             {/* email */}
                             <div className="form-group">
                                 <label htmlFor="username">Email :</label>

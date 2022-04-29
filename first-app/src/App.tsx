@@ -14,8 +14,6 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 })
 
-
-
 function App() {
   return (
     <Fragment>
@@ -24,7 +22,8 @@ function App() {
       </div>
 
       <div className="container">
-          <Route path="/">
+        <Switch>
+          <Route path="/" exact>
             <Redirect to="/login" />
           </Route>
           <Route path="/login">
@@ -44,9 +43,10 @@ function App() {
           <Route path="/courses/:course/:duration">
             <Course />
           </Route>
-          <Route path="/courses" exact>
+          <Route path="/courses">
             <Courses />
           </Route>
+        </Switch>
       </div>
     </Fragment>
   );
