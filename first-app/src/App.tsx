@@ -1,6 +1,6 @@
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { Fragment } from 'react';
-import { Route, Switch, BrowserRouter, Link } from 'react-router-dom';
+import { Route, Switch, BrowserRouter, Link, Redirect } from 'react-router-dom';
 import Expenses from './Components/Expenses/Expenses';
 import Header from './Components/Header/Header';
 import Login from './Components/Login/Login';
@@ -22,7 +22,10 @@ function App() {
       </div>
 
       <div className="container">
-        <Route path="/" exact>
+        <Route path="/">
+          <Redirect to="/login"/>
+        </Route>
+        <Route path="/login">
           <Login />
         </Route>
         <Route path="/posts">
