@@ -225,4 +225,14 @@ useMemo(() => Function, []) = useCallback(()=>{}, [])
 - npm i @apollo/client@3.5.10
 
 # to install router
-- npm i react-router-dom@5.2.0 @types/react-router-dom
+- npm i react-router-dom@5.2.0 @types/react-router-dom@5
+
+# React Routing
+- Creating Links / NavLinks
+- Routes <Route> - Creating Routes
+- Send and consuming Route parameter "/:course/:duration"
+- Send and consume Query parameter "/courses?order=asc"
+- Nested Routes / Child routing 
+
+
+# Redux
