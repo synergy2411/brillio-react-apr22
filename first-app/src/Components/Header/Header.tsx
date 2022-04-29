@@ -18,6 +18,9 @@ const Header = () => {
                     <li className='nav-item'>
                         <NavLink activeClassName='active' to="/users" className='nav-link'>Users</NavLink>
                     </li>
+                    <li className='nav-item'>
+                        <NavLink activeClassName='active' to="/courses" className='nav-link'>Courses</NavLink>
+                    </li>
                 </ul>
             </nav>
         </header>

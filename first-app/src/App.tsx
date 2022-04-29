@@ -1,6 +1,8 @@
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import { Fragment } from 'react';
-import { Route, Switch, BrowserRouter, Link, Redirect } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
+import Course from './Components/Courses/Course/Course';
+import Courses from './Components/Courses/Courses';
 import Expenses from './Components/Expenses/Expenses';
 import Header from './Components/Header/Header';
 import Login from './Components/Login/Login';
@@ -22,23 +24,29 @@ function App() {
       </div>
 
       <div className="container">
-        <Route path="/">
-          <Redirect to="/login"/>
-        </Route>
-        <Route path="/login">
-          <Login />
-        </Route>
-        <Route path="/posts">
-          <Posts />
-        </Route>
-        <Route path="/expenses">
-          <Expenses />
-        </Route>
-        <Route path="/users">
-          <ApolloProvider client={client}>
-            <Users />
-          </ApolloProvider>
-        </Route>
+          <Route path="/">
+            <Redirect to="/login" />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/posts">
+            <Posts />
+          </Route>
+          <Route path="/expenses">
+            <Expenses />
+          </Route>
+          <Route path="/users">
+            <ApolloProvider client={client}>
+              <Users />
+            </ApolloProvider>
+          </Route>
+          <Route path="/courses/:course/:duration">
+            <Course />
+          </Route>
+          <Route path="/courses" exact>
+            <Courses />
+          </Route>
       </div>
     </Fragment>
   );
