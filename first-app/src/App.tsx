@@ -7,6 +7,7 @@ import Expenses from './Components/Expenses/Expenses';
 import Header from './Components/Header/Header';
 import Login from './Components/Login/Login';
 import Posts from './Components/Posts/Posts';
+import AddTodo from './Components/Todos/AddTodo/AddTodo';
 import Todos from './Components/Todos/Todos';
 import Users from './Components/Users/Users';
 
@@ -46,6 +47,9 @@ function App() {
           </Route>
           <Route path="/courses">
             <Courses />
+          </Route>
+          <Route path="/todos/new">
+            <AddTodo />
           </Route>
           <Route path="/todos">
             <Todos />
