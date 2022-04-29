@@ -1,6 +1,6 @@
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { Fragment } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, BrowserRouter, Link } from 'react-router-dom';
 import Expenses from './Components/Expenses/Expenses';
 import Header from './Components/Header/Header';
 import Login from './Components/Login/Login';
@@ -12,6 +12,8 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 })
 
+
+
 function App() {
   return (
     <Fragment>
@@ -20,22 +22,20 @@ function App() {
       </div>
 
       <div className="container">
-        <Switch>
-          <Route path="/" exact>
-            <Login />
-          </Route>
-          <Route path="/expenses">
-            <Expenses />
-          </Route>
-          <Route path="/posts">
-            <Posts />
-          </Route>
-          <Route path="/users">
-            <ApolloProvider client={client}>
-              <Users />
-            </ApolloProvider>
-          </Route>
-        </Switch>
+        <Route path="/" exact>
+          <Login />
+        </Route>
+        <Route path="/posts">
+          <Posts />
+        </Route>
+        <Route path="/expenses">
+          <Expenses />
+        </Route>
+        <Route path="/users">
+          <ApolloProvider client={client}>
+            <Users />
+          </ApolloProvider>
+        </Route>
       </div>
     </Fragment>
   );

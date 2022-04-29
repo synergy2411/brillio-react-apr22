@@ -22,7 +22,13 @@ const AddUser = () => {
     password: ''
   })
 
-  let [createUserCallback, {error, loading, data}] = useMutation(CREATE_USER_MUTATION)
+  let [createUserCallback, {error, loading, data}] = useMutation(CREATE_USER_MUTATION,{
+    variables :{
+      username : '',
+      email : '',
+      password : ''
+    }
+  })
 
   const createUserHandler = (event : React.FormEvent) => {
     event.preventDefault()

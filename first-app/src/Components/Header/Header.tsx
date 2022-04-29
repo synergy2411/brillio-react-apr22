@@ -3,20 +3,24 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
-        <ul>
-            <li>
-                <Link to="/">Login</Link>
-            </li>
-            <li>
-                <Link to="/expense">Expense</Link>
-            </li>
-            <li>
-                <Link to="/posts">Posts</Link>
-            </li>
-            <li>
-                <Link to="/users">Users</Link>
-            </li>
-        </ul>
+        <header>
+            <nav>
+                <ul className='nav nav-tabs'>
+                    <li className='nav-item'>
+                        <Link to="/" className='nav-link'>Login</Link>
+                    </li>
+                    <li className='nav-item'>
+                        <Link to="/expenses" className='nav-link'>Expense</Link>
+                    </li>
+                    <li className='nav-item'>
+                        <Link to="/posts" className='nav-link'>Posts</Link>
+                    </li>
+                    <li className='nav-item'>
+                        <Link to="/users" className='nav-link'>Users</Link>
+                    </li>
+                </ul>
+            </nav>
+        </header>
     )
 }
 
