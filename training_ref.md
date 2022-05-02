@@ -257,3 +257,19 @@ useMemo(() => Function, []) = useCallback(()=>{}, [])
     : Set up automatic builds and deploys with GitHub? (y/N) : N
     : File build/index.html already exists. Overwrite? (y/N) : N
 - to deploy on Firebase > firebase deploy
+
+
+# Microservices (backends - Node / Java/ Dot Net etc)
+- dividing large app into smaller functionality
+- load balancing
+- service means "functionality"
+- tested and deployed easily
+- isolated
+- HTTP API Calls
+
+Service A -> Down
+Service B
+
+# Monolithic App - ecommerce -> Product List | Cart | Orders | Customer Data | Service
+
+# Micro-frontend (UI)
