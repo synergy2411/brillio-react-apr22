@@ -21,6 +21,15 @@ const schema = buildSchema(`
     }
     type Mutation {
         createUser(data : CreateUserInput) : User!
+        createTodo(data : CreateTodoInput ) : Todo!
+    }
+    type Todo {
+        id : ID!
+        label : String!
+        completed : Boolean!
+    }
+    input CreateTodoInput {
+        label : String!
     }
     input SerachUserInput {
         name : String
@@ -64,6 +73,10 @@ const rootValue = {
             throw new Error("Unable to find user for - " + name)
         }
         throw new Error("Name filed is missing")
+    },
+    createTodo : args => {
+        console.log(args.data);
+        return {id : v4(), label : args.data.label, completed : false}
     }
 }
 

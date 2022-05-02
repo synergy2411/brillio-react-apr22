@@ -1,6 +1,7 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import { Fragment, lazy, Suspense } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
+import GraphQLTodo from './Components/GraphQLTodo/GraphQLTodo';
 import Header from './Components/Header/Header';
 import Login from './Components/Login/Login';
 
@@ -25,39 +26,42 @@ function App() {
       </div>
 
       <div className="container">
-        <Suspense fallback={<p>Loading...</p>}>
-          <Switch>
-            <Route path="/" exact>
-              <Redirect to="/login" />
-            </Route>
-            <Route path="/login">
-              <Login />
-            </Route>
-            <Route path="/posts">
-              <Posts />
-            </Route>
-            <Route path="/expenses">
-              <Expenses />
-            </Route>
-            <Route path="/users">
-              <ApolloProvider client={client}>
+        <ApolloProvider client={client}>
+          <Suspense fallback={<p>Loading...</p>}>
+            <Switch>
+              <Route path="/" exact>
+                <Redirect to="/login" />
+              </Route>
+              <Route path="/login">
+                <Login />
+              </Route>
+              <Route path="/posts">
+                <Posts />
+              </Route>
+              <Route path="/expenses">
+                <Expenses />
+              </Route>
+              <Route path="/users">
                 <Users />
-              </ApolloProvider>
-            </Route>
-            <Route path="/courses/:course/:duration">
-              <Course />
-            </Route>
-            <Route path="/courses">
-              <Courses />
-            </Route>
-            <Route path="/todos/new">
-              <AddTodo />
-            </Route>
-            <Route path="/todos">
-              <Todos />
-            </Route>
-          </Switch>
-        </Suspense>
+              </Route>
+              <Route path="/courses/:course/:duration">
+                <Course />
+              </Route>
+              <Route path="/courses">
+                <Courses />
+              </Route>
+              <Route path="/todos/new">
+                <AddTodo />
+              </Route>
+              <Route path="/todos">
+                <Todos />
+              </Route>
+              <Route path="/graphql-todo">
+                <GraphQLTodo />
+              </Route>
+            </Switch>
+          </Suspense>
+        </ApolloProvider>
       </div>
     </Fragment>
   );

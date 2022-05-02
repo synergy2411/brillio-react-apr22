@@ -24,6 +24,9 @@ const Header = () => {
                     <li className='nav-item'>
                         <NavLink activeClassName='active' to="/todos" className='nav-link'>Todos</NavLink>
                     </li>
+                    <li className='nav-item'>
+                        <NavLink activeClassName='active' to="/graphql-todo" className='nav-link'>GraphQL Todos</NavLink>
+                    </li>
                 </ul>
             </nav>
         </header>
