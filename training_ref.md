@@ -246,3 +246,14 @@ useMemo(() => Function, []) = useCallback(()=>{}, [])
 # Gmail Account
 
 # Firebase Cloud -> Google
+- Create Project on Firebase
+- build your project > npm run build
+- install firebase-tools > npm install -g firebase-tools
+- login to Gmail (Firebase) > firebase login
+- initialize firebase in your project > firebase init
+    : Are you ready to proceed? (Y/n) : Y
+    : What do you want to use as your public directory? (public) : build
+    : Configure as a single-page app (rewrite all urls to /index.html)? (y/N) : y
+    : Set up automatic builds and deploys with GitHub? (y/N) : N
+    : File build/index.html already exists. Overwrite? (y/N) : N
+- to deploy on Firebase > firebase deploy
