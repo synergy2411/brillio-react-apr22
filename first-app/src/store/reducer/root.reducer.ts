@@ -11,6 +11,12 @@ export default function rootReducer(state : AppState = initialState, action : Ac
         return {
             todos : [newTodo, ...state.todos]
         }
+    }else if(action.type === "DELETE_TODO"){
+        const duplicateTodos = state.todos.filter(todo => todo.id !== action.payload)
+        return {
+            todos : duplicateTodos
+        }
     }
+    
     return state;
 }

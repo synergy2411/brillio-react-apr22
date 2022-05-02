@@ -5,6 +5,7 @@
   "types": "./types.d.ts",
   "dependencies": {
     "@apollo/client": "^3.5.10",
+    "@redux-devtools/extension": "^3.2.2",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
     "@testing-library/user-event": "^13.5.0",

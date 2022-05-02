@@ -236,3 +236,13 @@ useMemo(() => Function, []) = useCallback(()=>{}, [])
 
 
 # Redux
+
+
+-> deleted node_modules
+-> npm i
+-> npm i react-redux @types/react-redux
+-> restart server
+
+# Gmail Account
+
+# Firebase Cloud -> Google

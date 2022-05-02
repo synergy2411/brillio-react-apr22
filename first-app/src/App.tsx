@@ -1,15 +1,16 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
-import { Fragment } from 'react';
+import { Fragment, lazy, Suspense } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import Course from './Components/Courses/Course/Course';
-import Courses from './Components/Courses/Courses';
-import Expenses from './Components/Expenses/Expenses';
 import Header from './Components/Header/Header';
 import Login from './Components/Login/Login';
-import Posts from './Components/Posts/Posts';
-import AddTodo from './Components/Todos/AddTodo/AddTodo';
-import Todos from './Components/Todos/Todos';
-import Users from './Components/Users/Users';
+
+const Course = lazy(() => import("./Components/Courses/Course/Course"))
+const Courses = lazy(() => import("./Components/Courses/Courses"))
+const Expenses = lazy(() => import("./Components/Expenses/Expenses"))
+const Posts = lazy(() => import("./Components/Posts/Posts"))
+const AddTodo = lazy(() => import("./Components/Todos/AddTodo/AddTodo"))
+const Todos = lazy(() => import("./Components/Todos/Todos"))
+const Users = lazy(() => import("./Components/Users/Users"))
 
 const client = new ApolloClient({
   uri: "http://localhost:9090/gq",
@@ -24,37 +25,39 @@ function App() {
       </div>
 
       <div className="container">
-        <Switch>
-          <Route path="/" exact>
-            <Redirect to="/login" />
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/posts">
-            <Posts />
-          </Route>
-          <Route path="/expenses">
-            <Expenses />
-          </Route>
-          <Route path="/users">
-            <ApolloProvider client={client}>
-              <Users />
-            </ApolloProvider>
-          </Route>
-          <Route path="/courses/:course/:duration">
-            <Course />
-          </Route>
-          <Route path="/courses">
-            <Courses />
-          </Route>
-          <Route path="/todos/new">
-            <AddTodo />
-          </Route>
-          <Route path="/todos">
-            <Todos />
-          </Route>
-        </Switch>
+        <Suspense fallback={<p>Loading...</p>}>
+          <Switch>
+            <Route path="/" exact>
+              <Redirect to="/login" />
+            </Route>
+            <Route path="/login">
+              <Login />
+            </Route>
+            <Route path="/posts">
+              <Posts />
+            </Route>
+            <Route path="/expenses">
+              <Expenses />
+            </Route>
+            <Route path="/users">
+              <ApolloProvider client={client}>
+                <Users />
+              </ApolloProvider>
+            </Route>
+            <Route path="/courses/:course/:duration">
+              <Course />
+            </Route>
+            <Route path="/courses">
+              <Courses />
+            </Route>
+            <Route path="/todos/new">
+              <AddTodo />
+            </Route>
+            <Route path="/todos">
+              <Todos />
+            </Route>
+          </Switch>
+        </Suspense>
       </div>
     </Fragment>
   );
